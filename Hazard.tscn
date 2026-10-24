@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bcrysank2vdau"]
+
+[ext_resource type="Script" uid="uid://bv7af1n65qr6" path="res://hazard.gd" id="1_ljgm1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep54k"]
+size = Vector2(40, 40)
+
+[node name="Hazard" type="Area2D" unique_id=1148837144]
+position = Vector2(480, 50)
+script = ExtResource("1_ljgm1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=115120905]
+visible = false
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1973239881]
+shape = SubResource("RectangleShape2D_ep54k")
+
+[node name="ScreenNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=198582539]
+rect = Rect2(-20, -20, 40, 40)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="ScreenNotifier" to="." method="_on_screen_notifier_screen_exited"]
